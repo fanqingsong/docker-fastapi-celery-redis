@@ -12,13 +12,13 @@ COPY . /api
 WORKDIR /api
 
 # install requirements
-RUN pip install -U setuptools pip
-RUN pip install -r requirements.txt
+RUN pip install -U setuptools pip  -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # expose the app port
 EXPOSE 5001
 
-RUN pip install uvicorn
+RUN pip install uvicorn  -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # run the app server in production with gunicorn
 CMD ["uvicorn", "--host", "0.0.0.0", "--port", "5001", "--workers", "3", "app:app"]

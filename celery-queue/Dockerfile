@@ -7,5 +7,5 @@ ENV C_FORCE_ROOT true
 COPY . /queue
 WORKDIR /queue
 
-RUN pip install -U setuptools pip
-RUN pip install -r requirements.txt
+RUN pip install -U setuptools==66 pip -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
