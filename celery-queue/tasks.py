@@ -1,6 +1,7 @@
 import os
 import time
 from celery import Celery
+from celery.schedules import crontab
 from celery.utils.log import get_task_logger
 import redis
 
@@ -31,7 +32,7 @@ celery_beat_schedule = {
     "time_scheduler": {
         "task": "tasks.timer",
         # Run every second
-        "schedule": 1.0,
+        "schedule": crontab(minute='*/1'),
     }
 }
 
@@ -39,7 +40,7 @@ celery_beat_schedule = {
 celery.conf.update(
     result_backend=CELERY_RESULT_BACKEND,
     broker_url=CELERY_BROKER_URL,
-    timezone="UTC",
+    timezone="Asia/Shanghai",
     task_serializer="json",
     accept_content=["json"],
     result_serializer="json",

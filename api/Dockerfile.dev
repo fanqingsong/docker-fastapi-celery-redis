@@ -8,6 +8,9 @@ ENV HOST 0.0.0.0
 ENV PORT 5001
 ENV DEBUG true
 
+ENV TZ=Asia/Shanghai
+
+
 COPY . /api
 WORKDIR /api
 
